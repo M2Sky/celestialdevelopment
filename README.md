@@ -12,8 +12,5 @@ Welcome to my link hub!
 
 🎮 **[Discord](https://discord.com)**  
 
-🎮 **[Now.GG](https://maths.services/)** 
-(https://selfstudybrain.com/)
-(https://educationbluesky.com/)
-(https://xn--31byd1i.net/)
+🎮 **[Now.GG](https://mathsstudio.com/)** 
 ---
