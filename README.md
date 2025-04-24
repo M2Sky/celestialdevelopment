@@ -13,4 +13,5 @@ Welcome to my link hub!
 🎮 **[Discord](https://discord.com)**  
 
 🎮 **[Now.GG](https://maths.services/)** 
+(https://selfstudybrain.com/)
 ---
