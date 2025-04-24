@@ -14,4 +14,6 @@ Welcome to my link hub!
 
 🎮 **[Now.GG](https://maths.services/)** 
 (https://selfstudybrain.com/)
+(https://educationbluesky.com/)
+(https://xn--31byd1i.net/)
 ---
