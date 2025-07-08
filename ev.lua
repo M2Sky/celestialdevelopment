@@ -1,18 +1,21 @@
+-- Generated using RoadToGlory's Converter v1.1 (RoadToGlory#9879)
+
+-- Instances:
+
 local Converted = {
 	["_ScreenGui"] = Instance.new("ScreenGui");
 	["_TextBox"] = Instance.new("TextBox");
-	["_Script"] = Instance.new("Script");
+	["_LocalScript"] = Instance.new("LocalScript");
 }
 
+-- Properties:
+
 Converted["_ScreenGui"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Converted["_ScreenGui"].Name = "TimerGui"
 Converted["_ScreenGui"].Parent = game:GetService("CoreGui")
 
-Converted["_TextBox"].Name = "TimerBox"
 Converted["_TextBox"].ClearTextOnFocus = false
-Converted["_TextBox"].CursorPosition = -1
 Converted["_TextBox"].Font = Enum.Font.SourceSans
-Converted["_TextBox"].Text = "Starting..."
+Converted["_TextBox"].Text = "Gay"
 Converted["_TextBox"].TextColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_TextBox"].TextScaled = true
 Converted["_TextBox"].TextSize = 14
@@ -21,38 +24,56 @@ Converted["_TextBox"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_TextBox"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_TextBox"].BorderSizePixel = 0
 Converted["_TextBox"].Interactable = false
-Converted["_TextBox"].Position = UDim2.new(0.774, 0, 0.624, 0)
+Converted["_TextBox"].Position = UDim2.new(0.649425626, 0, 0.472977519, 0)
 Converted["_TextBox"].Size = UDim2.new(0, 148, 0, 51)
 Converted["_TextBox"].Parent = Converted["_ScreenGui"]
 
-Converted["_Script"].Source = [[
-local textbox = script.Parent
-local seconds = 0
+-- Fake Module Scripts:
 
-while true do
-	task.wait(1)
-	seconds += 1
+local fake_module_scripts = {}
 
-	local displayText = ""
 
-	if seconds < 60 then
-		displayText = "Since execution: " .. seconds .. " sec" .. (seconds ~= 1 and "s" or "")
-	elseif seconds < 3600 then
-		local mins = math.floor(seconds / 60)
-		displayText = "Since execution: " .. mins .. " min" .. (mins ~= 1 and "s" or "")
-	else
-		local hours = math.floor(seconds / 3600)
-		displayText = "Since execution: " .. hours .. " hour" .. (hours ~= 1 and "s" or "")
+-- Fake Local Scripts:
+
+local function HNVV_fake_script() -- Fake Script: StarterGui.ScreenGui.TextBox.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = Converted["_TextBox"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local textbox = script.Parent
+	
+	local seconds = 0
+	
+	while true do
+		task.wait(1)
+		seconds += 1
+	
+		local displayText = ""
+	
+		if seconds < 60 then
+			displayText = "Since execution: " .. seconds .. " sec" .. (seconds ~= 1 and "s" or "")
+		elseif seconds < 3600 then
+			local mins = math.floor(seconds / 60)
+			displayText = "Since execution: " .. mins .. " min" .. (mins ~= 1 and "s" or "")
+		else
+			local hours = math.floor(seconds / 3600)
+			displayText = "Since execution: " .. hours .. " hour" .. (hours ~= 1 and "s" or "")
+		end
+	
+		textbox.Text = displayText
 	end
-
-	textbox.Text = displayText
+	
 end
-]]
 
-Converted["_Script"].Name = "TimeCounter"
-Converted["_Script"].Parent = Converted["_TextBox"]
-
-wait(36)
+coroutine.wrap(HNVV_fake_script)()
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -224,5 +245,3 @@ player.Idled:Connect(function()
     virtualUser:CaptureController()
     virtualUser:ClickButton2(Vector2.new())
 end)
-
-
