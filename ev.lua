@@ -214,3 +214,46 @@ player.Idled:Connect(function()
     virtualUser:CaptureController()
     virtualUser:ClickButton2(Vector2.new())
 end)
+
+
+
+
+
+
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local PlaceId = game.PlaceId
+LocalPlayer.OnTeleport:Connect(function(state)
+	if state == Enum.TeleportState.Failed or state == Enum.TeleportState.Started then
+		while true do
+			pcall(function()
+				TeleportService:Teleport(PlaceId, LocalPlayer)
+			end)
+			task.wait(5)
+		end
+	end
+end)
+task.spawn(function()
+	local CoreGui = game:GetService("CoreGui")
+	local function watchKick()
+		local promptGui = CoreGui:WaitForChild("RobloxPromptGui", 10)
+		if not promptGui then return end
+		local overlay = promptGui:WaitForChild("promptOverlay", 10)
+		if not overlay then return end
+
+		overlay:GetPropertyChangedSignal("Visible"):Connect(function()
+			if overlay.Visible then
+				local label = overlay:FindFirstChildOfClass("TextLabel")
+				if label and label.Text then
+					local text = label.Text:lower()
+					if text:find("kicked") or text:find("disconnected") or text:find("lost connection") then
+						TeleportService:Teleport(PlaceId)
+					end
+				end
+			end
+		end)
+	end
+
+	pcall(watchKick)
+end)
