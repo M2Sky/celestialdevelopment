@@ -1,79 +1,48 @@
--- Generated using RoadToGlory's Converter v1.1 (RoadToGlory#9879)
+local CoreGui = game:GetService("CoreGui")
+local oldGui = CoreGui:FindFirstChild("ExecutionTimerGui")
+if oldGui then oldGui:Destroy() end
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ExecutionTimerGui"
+screenGui.ResetOnSpawn = false
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screenGui.Parent = CoreGui
+local textLabel = Instance.new("TextLabel")
+textLabel.Name = "TimerLabel"
+textLabel.Parent = screenGui
+textLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BorderSizePixel = 0
+textLabel.Position = UDim2.new(0.65, 0, 0.47, 0)
+textLabel.Size = UDim2.new(0, 240, 0, 55)
+textLabel.Font = Enum.Font.SourceSansBold
+textLabel.TextColor3 = Color3.new(0, 0, 0)
+textLabel.Text = "Gay"
+textLabel.TextScaled = true
+textLabel.TextWrapped = true
+textLabel.TextXAlignment = Enum.TextXAlignment.Center
+textLabel.TextYAlignment = Enum.TextYAlignment.Center
 
--- Instances:
+local seconds = 0
 
-local Converted = {
-	["_ScreenGui"] = Instance.new("ScreenGui");
-	["_TextBox"] = Instance.new("TextBox");
-	["_LocalScript"] = Instance.new("LocalScript");
-}
-
--- Properties:
-
-Converted["_ScreenGui"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Converted["_ScreenGui"].Parent = game:GetService("CoreGui")
-
-Converted["_TextBox"].ClearTextOnFocus = false
-Converted["_TextBox"].Font = Enum.Font.SourceSans
-Converted["_TextBox"].Text = "Gay"
-Converted["_TextBox"].TextColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextBox"].TextScaled = true
-Converted["_TextBox"].TextSize = 14
-Converted["_TextBox"].TextWrapped = true
-Converted["_TextBox"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextBox"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextBox"].BorderSizePixel = 0
-Converted["_TextBox"].Interactable = false
-Converted["_TextBox"].Position = UDim2.new(0.649425626, 0, 0.472977519, 0)
-Converted["_TextBox"].Size = UDim2.new(0, 148, 0, 51)
-Converted["_TextBox"].Parent = Converted["_ScreenGui"]
-
--- Fake Module Scripts:
-
-local fake_module_scripts = {}
-
-
--- Fake Local Scripts:
-
-local function HNVV_fake_script() -- Fake Script: StarterGui.ScreenGui.TextBox.LocalScript
-    local script = Instance.new("LocalScript")
-    script.Name = "LocalScript"
-    script.Parent = Converted["_TextBox"]
-    local req = require
-    local require = function(obj)
-        local fake = fake_module_scripts[obj]
-        if fake then
-            return fake()
-        end
-        return req(obj)
-    end
-
-	local textbox = script.Parent
-	
-	local seconds = 0
-	
+task.spawn(function()
 	while true do
 		task.wait(1)
 		seconds += 1
-	
-		local displayText = ""
-	
-		if seconds < 60 then
-			displayText = "Since execution: " .. seconds .. " sec" .. (seconds ~= 1 and "s" or "")
-		elseif seconds < 3600 then
-			local mins = math.floor(seconds / 60)
-			displayText = "Since execution: " .. mins .. " min" .. (mins ~= 1 and "s" or "")
-		else
-			local hours = math.floor(seconds / 3600)
-			displayText = "Since execution: " .. hours .. " hour" .. (hours ~= 1 and "s" or "")
-		end
-	
-		textbox.Text = displayText
-	end
-	
-end
 
-coroutine.wrap(HNVV_fake_script)()
+		local hrs = math.floor(seconds / 3600)
+		local mins = math.floor((seconds % 3600) / 60)
+		local secs = seconds % 60
+
+		local displayText = string.format(
+			"Since execution: %d hour%s, %d minute%s, %d second%s",
+			hrs, hrs == 1 and "" or "s",
+			mins, mins == 1 and "" or "s",
+			secs, secs == 1 and "" or "s"
+		)
+
+		textLabel.Text = displayText
+	end
+end)
+
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
