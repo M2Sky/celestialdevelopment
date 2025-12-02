@@ -1325,7 +1325,7 @@
 	        height: window.innerHeight / 3 * 2,
 	        minimized: false
 	    },
-	    "Gamemode Specific Cheats": {
+	    "Heigui Games": {
 	        x: window.innerWidth / 8 * 3,
 	        y: 0,
 	        width: window.innerWidth / 4,
@@ -21652,7 +21652,7 @@
 		};
 	}
 
-	// (60:4) <Menu name="Gamemode Specific Cheats">
+	// (60:4) <Menu name="Heigui Games">
 	function create_default_slot(ctx) {
 		let classicautopurchase;
 		let t0;
@@ -21821,7 +21821,7 @@
 
 		menu2 = new Menu({
 				props: {
-					name: "Gamemode Specific Cheats",
+					name: "Heigui Games",
 					$$slots: { default: [create_default_slot] },
 					$$scope: { ctx }
 				}
