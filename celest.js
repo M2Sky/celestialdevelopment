@@ -21967,7 +21967,6 @@
 	        // eg: ,"5CPH7":"App.83745002.js",
 	        const index = text.indexOf(':"App.');
 	        if (!index) {
-	            alert("GC: Failed to find the correct script to modify. Please open an issue on GitHub.");
 	            return;
 	        }
 	        const id = text.substring(index - 7, index);
@@ -21977,7 +21976,6 @@
 	        // get the wildcard character
 	        const wildcard = regex.exec(text)?.[1];
 	        if (!wildcard) {
-	            alert("GC: Failed to find the correct script to modify. Please open an issue on GitHub.");
 	            return;
 	        }
 	        text = text.replace(regex, `new Promise(async (resolve) => {
@@ -21990,7 +21988,6 @@
     const varRegex = /(.)={network:new/
     const varRes = varRegex.exec(text)
     if(!endRes[1] || !varRes[1]) {
-        alert("GC: Failed to find the correct script to modify. Please open an issue on GitHub.")
         return;
     }
     text = text.replace(endRegex, 'assignment:new(0,'+endRes[1]+'.default)};window.stores='+varRes[1]+';window.storesLoaded.set(true);console.log("GC: Stores loaded via intercept");')
