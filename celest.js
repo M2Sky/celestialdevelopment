@@ -1332,7 +1332,7 @@
 	        height: window.innerHeight / 3 * 2,
 	        minimized: false
 	    },
-	    "Customization": {
+	    "Dih pic when?": {
 	        x: window.innerWidth / 4 * 3,
 	        y: 0,
 	        width: window.innerWidth / 4,
@@ -21483,7 +21483,7 @@
 		};
 	}
 
-	// (32:4) <Menu name="Customization">
+	// (32:4) <Menu name="Dih pic when?">
 	function create_default_slot_2(ctx) {
 		let group;
 		let t0;
@@ -21805,7 +21805,7 @@
 
 		menu0 = new Menu({
 				props: {
-					name: "Customization",
+					name: "Dih pic when?",
 					$$slots: { default: [create_default_slot_2] },
 					$$scope: { ctx }
 				}
