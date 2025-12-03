@@ -21483,7 +21483,7 @@
 		};
 	}
 
-	// (32:4) <Menu name="Dih pic when?">
+	// (32:4) <Menu name="Dih Pic when?">
 	function create_default_slot_2(ctx) {
 		let group;
 		let t0;
@@ -22066,7 +22066,6 @@
 	        let newRoot = document.createElement('div');
 	        newRoot.id = 'root';
 	        document.body.appendChild(newRoot);
-	        // remove all global variables
 	        let vars = ["__mobxGlobals", "__mobxInstanceCount"];
 	        for (let v of vars) {
 	            if (v in window)
@@ -22077,7 +22076,6 @@
 	        let src = new URL(url, location.origin).href;
 	        let res = await fetch(src);
 	        let text = await res.text();
-	        // nasty hack to prevent the browser from caching other scripts
 	        text = text.replaceAll('import(', 'window.decachedImport(');
 	        text = text.replaceAll('import.meta.url', `'${src}'`);
 	        let blob = new Blob([text], { type: 'application/javascript' });
@@ -22093,7 +22091,6 @@
 	            throw new Error('match and callback are required');
 	        let intercept = { match, callback, once };
 	        this.reqIntercepts.push(intercept);
-	        // return a cancel function
 	        return () => {
 	            let index = this.reqIntercepts.indexOf(intercept);
 	            if (index !== -1)
@@ -22135,7 +22132,6 @@
 	        // @ts-ignore
 	        ).register = (moduleName, moduleCallback) => {
 	            this._parcelModules[moduleName] = moduleCallback;
-	            // remove it from the cache if it's already been loaded
 	            if (moduleName in this._parcelModuleCache) {
 	                delete this._parcelModuleCache[moduleName];
 	            }
@@ -22149,7 +22145,6 @@
 	    }
 	}
 
-	// confirm that no amplitude.com script exists
 	let gameLoaded = document.querySelector('script[src*="amplitude.com"]') !== null;
 	if (gameLoaded) {
 	    alert("This script can only be run before you join the game. Please reload the page and try again.");
